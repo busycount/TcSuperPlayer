@@ -1,5 +1,6 @@
 package com.busycount.tcsuperplayer.sample;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         // 播放器配置
         SuperPlayerGlobalConfig prefs = SuperPlayerGlobalConfig.getInstance();
         // 开启悬浮窗播放
-        prefs.enableFloatWindow = true;
+        prefs.enableFloatWindow = false;
         // 设置悬浮窗的初始位置和宽高
         SuperPlayerGlobalConfig.TXRect rect = new SuperPlayerGlobalConfig.TXRect();
         rect.x = 0;
@@ -71,5 +72,11 @@ public class MainActivity extends AppCompatActivity {
         if (mSuperPlayerView.getPlayMode() != SuperPlayerConst.PLAYMODE_FLOAT) {
             mSuperPlayerView.resetPlayer();
         }
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }

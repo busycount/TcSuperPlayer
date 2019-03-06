@@ -22,7 +22,6 @@ import com.tencent.liteav.basic.log.TXCLog;
  */
 public class TCVodControllerSmall extends TCVodControllerBase implements View.OnClickListener {
     private static final String TAG = "TCVodControllerSmall";
-    private LinearLayout mLayoutTop;
     private LinearLayout mLayoutBottom;
     private ImageView mIvPause;
     private ImageView mIvFullScreen;
@@ -54,7 +53,6 @@ public class TCVodControllerSmall extends TCVodControllerBase implements View.On
      */
     @Override
     void onShow() {
-        mLayoutTop.setVisibility(View.VISIBLE);
         mLayoutBottom.setVisibility(View.VISIBLE);
 
         if (mPlayType == SuperPlayerConst.PLAYTYPE_LIVE_SHIFT) {
@@ -67,7 +65,6 @@ public class TCVodControllerSmall extends TCVodControllerBase implements View.On
      */
     @Override
     void onHide() {
-        mLayoutTop.setVisibility(View.GONE);
         mLayoutBottom.setVisibility(View.GONE);
 
         if (mPlayType == SuperPlayerConst.PLAYTYPE_LIVE_SHIFT) {
@@ -95,8 +92,6 @@ public class TCVodControllerSmall extends TCVodControllerBase implements View.On
     private void initViews() {
         mLayoutInflater.inflate(R.layout.vod_controller_small, this);
 
-        mLayoutTop = findViewById(R.id.layout_top);
-        mLayoutTop.setOnClickListener(this);
         mLayoutBottom = findViewById(R.id.layout_bottom);
         mLayoutBottom.setOnClickListener(this);
         mLayoutReplay = findViewById(R.id.layout_replay);
@@ -114,7 +109,6 @@ public class TCVodControllerSmall extends TCVodControllerBase implements View.On
         mTvBackToLive.setOnClickListener(this);
         mIvPause.setOnClickListener(this);
         mIvFullScreen.setOnClickListener(this);
-        mLayoutTop.setOnClickListener(this);
         mLayoutReplay.setOnClickListener(this);
 
         mSeekBarProgress.setOnSeekBarChangeListener(this);
@@ -128,7 +122,7 @@ public class TCVodControllerSmall extends TCVodControllerBase implements View.On
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.layout_top) {
+        if (i == R.id.iv_back) {
             onBack();
 
         } else if (i == R.id.iv_pause) {
